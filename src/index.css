@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --font-script: "Great Vibes", cursive;
+  --font-body: "Poppins", "Segoe UI", sans-serif;
+  --color-gold: #ffd166;
+  --color-gold-deep: #ffb703;
+  --color-rose: #ff7eb6;
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+}
+
+body {
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ---------- keyframes ---------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) scale(1, 1); }
+  to   { transform: translateX(-50%) scale(0.9, 1.15) rotate(2deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 16px rgba(255, 126, 182, 0.5), 0 0 40px rgba(255, 126, 182, 0.25); }
+  50%      { text-shadow: 0 0 28px rgba(255, 126, 182, 0.8), 0 0 64px rgba(255, 126, 182, 0.45); }
+}
+
+@keyframes float-up {
+  from { transform: translateY(0) rotate(-8deg); opacity: 1; }
+  70%  { opacity: 1; }
+  to   { transform: translateY(-110vh) rotate(8deg); opacity: 0; }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.anim-rise   { opacity: 0; animation: rise 1.2s ease forwards; }
+.anim-flicker { animation: flicker 0.35s ease-in-out infinite alternate; }
+.anim-pulse-glow { animation: pulse-glow 2.6s ease-in-out infinite; }
+.anim-bob    { animation: bob 3s ease-in-out infinite; }
+.anim-float-up { animation: float-up linear forwards; }
+
+/* staggered entrance */
+.d1 { animation-delay: 0.2s; }
+.d2 { animation-delay: 0.6s; }
+.d3 { animation-delay: 1.1s; }
+.d4 { animation-delay: 1.6s; }
+.d5 { animation-delay: 2.1s; }
+.d6 { animation-delay: 2.6s; }
+.d7 { animation-delay: 3.1s; }
+
+/* ---------- flame (needs custom shapes) ---------- */
+.flame {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 14px;
+  height: 26px;
+  background: radial-gradient(circle at 50% 75%, #fff7d6 0%, #ffd166 40%, #ff8c1a 75%, transparent 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 0 14px rgba(255, 170, 40, 0.85)) drop-shadow(0 0 40px rgba(255, 140, 26, 0.45));
+}
+
+.bowl {
+  height: 22px;
+  background: linear-gradient(180deg, #a2542c, #5d2a12);
+  border-radius: 8px 8px 46% 46% / 10px 10px 60% 60%;
+  box-shadow: inset 0 3px 6px rgba(255, 220, 150, 0.15), 0 6px 16px rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+.bowl::before {
+  content: "";
+  position: absolute;
+  inset: 0 6px auto 6px;
+  height: 6px;
+  background: rgba(255, 214, 140, 0.25);
+  border-radius: 50%;
+}
+
+/* ---------- boarding pass perforation ---------- */
+.perforation {
+  border-top: 2px dashed rgba(74, 50, 32, 0.35);
+  position: relative;
+}
+
+.perforation::before,
+.perforation::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #10203c;
+  box-shadow: inset 0 0 0 2px rgba(219, 158, 42, 0.5);
+}
+
+.perforation::before { left: -30px; }
+.perforation::after  { right: -30px; }
+
+/* gradient script heading */
+.gradient-script {
+  background: linear-gradient(120deg, #ffe29a 0%, #ffd166 30%, #ff9ec3 60%, #ffd0e4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 24px rgba(255, 183, 3, 0.35));
+}
